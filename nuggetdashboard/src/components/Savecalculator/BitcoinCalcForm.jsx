@@ -1,6 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { bitcoinGrowth } from "../../store/bitcoinSlice";
+import {
+  bitcoinGrowth,
+  updateBitcoinSavingsParameters,
+} from "../../store/bitcoinSlice";
 
 function BitCoinCalcForm() {
   const dispatch = useDispatch();
@@ -23,14 +26,18 @@ function BitCoinCalcForm() {
 
     return futureValue;
   };
-
   const bitcoinFutureValue = calculateFutureValue(
     startAmount,
     monthlyDeposit,
     years,
     annualReturn
   );
-  dispatch(bitcoinGrowth(Math.round(bitcoinFutureValue).toLocaleString()));
+  useEffect(() => {
+    dispatch(bitcoinGrowth(Math.round(bitcoinFutureValue).toLocaleString()));
+    dispatch(
+      updateBitcoinSavingsParameters({ startAmount, monthlyDeposit, years })
+    );
+  }, [startAmount, monthlyDeposit, years, dispatch, annualReturn]);
 
   return (
     <div className="max-w-lg mx-auto bg-white p-8 rounded-2xl shadow-lg border border-gray-200 text-center mt-5 mb-5">
@@ -97,7 +104,7 @@ function BitCoinCalcForm() {
         </div>
       </form>
       <p className="text-xs text-gray-500 mt-4">
-        *We have calculated that you will get an anual increase of 100 % per
+        *We have calculated that you will get an anual increase of 30 % per
         year.
       </p>
     </div>

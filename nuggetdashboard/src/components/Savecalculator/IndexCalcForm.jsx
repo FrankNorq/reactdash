@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { indexGrowth } from "../../store/indexSlice";
+import { indexGrowth, updateSavingsParameters } from "../../store/indexSlice";
 
 function SaveCalcForm() {
   const dispatch = useDispatch();
@@ -8,14 +8,15 @@ function SaveCalcForm() {
   const [monthlyDeposit, setMonthlyDeposit] = useState(1000);
   const [years, setYears] = useState(1);
   const annualReturn = 7;
+
   const calculateFutureValue = (
     startAmount,
     monthlyDeposit,
     years,
     annualReturn
   ) => {
-    const r = annualReturn / 100 / 12; // Månatlig avkastning
-    const n = years * 12; // Totala månader
+    const r = annualReturn / 100 / 12;
+    const n = years * 12;
 
     const futureValue =
       startAmount * Math.pow(1 + r, n) +
@@ -24,29 +25,41 @@ function SaveCalcForm() {
     return futureValue;
   };
 
-  const indexFutureValue = calculateFutureValue(
-    startAmount,
-    monthlyDeposit,
-    years,
-    annualReturn
-  );
-  dispatch(indexGrowth(Math.round(indexFutureValue)));
+  useEffect(() => {
+    const indexFutureValue = calculateFutureValue(
+      startAmount,
+      monthlyDeposit,
+      years,
+      annualReturn
+    );
+    dispatch(indexGrowth(Math.round(indexFutureValue)));
+    // Uppdatera sparande parametrar i global state
+    dispatch(updateSavingsParameters({ startAmount, monthlyDeposit, years }));
+  }, [startAmount, monthlyDeposit, years, dispatch, annualReturn]);
 
   return (
     <div className="max-w-lg mx-auto bg-white p-8 rounded-2xl shadow-lg border border-gray-200 text-center mt-5 mb-5">
       <div className="flex justify-center items-center mb-4">
-        <div className=" text-gray-800 text-lg font-bold px-4 py-2 rounded-lg">
+        <div className="text-gray-800 text-lg font-bold px-4 py-2 rounded-lg">
           Test our savings calculator
         </div>
       </div>
       <h5 className="text-3xl font-bold text-green-600">
-        {" "}
-        ${Math.round(indexFutureValue).toLocaleString()}
+        $
+        {Math.round(
+          calculateFutureValue(startAmount, monthlyDeposit, years, annualReturn)
+        ).toLocaleString()}
       </h5>
       <p className="text-gray-500 text-sm mb-4">
         Of which $
         {Math.round(
-          indexFutureValue - (startAmount + monthlyDeposit * years * 12)
+          calculateFutureValue(
+            startAmount,
+            monthlyDeposit,
+            years,
+            annualReturn
+          ) -
+            (startAmount + monthlyDeposit * years * 12)
         ).toLocaleString()}{" "}
         in return
       </p>
