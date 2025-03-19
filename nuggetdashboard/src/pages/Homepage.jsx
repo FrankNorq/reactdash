@@ -11,11 +11,10 @@ function HomePage() {
         Fill in the information on the calculators and watch the charts change
       </p>
       <IndexChart></IndexChart>
-      <BitcoinChart></BitcoinChart>
-
       <section className="mt-5">
         <CircularText text="Bitcoin" />
       </section>
+      <BitcoinChart></BitcoinChart>
     </div>
   );
 }

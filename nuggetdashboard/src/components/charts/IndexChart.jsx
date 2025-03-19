@@ -11,62 +11,30 @@ import {
 } from "recharts";
 
 const IndexChart = () => {
-  const { startAmount, monthlyDeposit, years } = useSelector(
-    (state) => state.savings
-  );
-  const annualReturn = 7;
-
-  const calculateFutureValue = (
-    startAmount,
-    monthlyDeposit,
-    years,
-    annualReturn
-  ) => {
-    const r = annualReturn / 100 / 12;
-    const n = years * 12;
-
-    return (
-      startAmount * Math.pow(1 + r, n) +
-      monthlyDeposit * ((Math.pow(1 + r, n) - 1) / r)
-    );
-  };
-
-  // Funktion för att beräkna summan av alla insättningar
-  const calculateTotalDeposits = (startAmount, monthlyDeposit, years) => {
-    const totalMonthlyDeposits = monthlyDeposit * years * 12;
-    return startAmount + totalMonthlyDeposits;
-  };
-
-  // Skapa data för grafen
-  const data = [];
-  for (let year = 0; year <= years; year++) {
-    const totalSavings = calculateFutureValue(
-      startAmount,
-      monthlyDeposit,
-      year,
-      annualReturn
-    );
-    const totalDeposits = calculateTotalDeposits(
-      startAmount,
-      monthlyDeposit,
-      year
-    );
-    const interest = totalSavings - totalDeposits;
-
-    data.push({
-      year: `Year ${year}`,
-      deposits: Math.round(totalDeposits),
-      interest: Math.round(interest),
-    });
-  }
+  const { savingsData } = useSelector((state) => state.savings);
 
   return (
     <div className="w-full max-w-2xl mx-auto p-4 bg-white shadow-lg rounded-2xl">
       <h2 className="text-xl font-semibold text-center mb-4">Index Savings</h2>
       <ResponsiveContainer width="100%" height={300}>
-        <BarChart data={data}>
-          <XAxis dataKey="year" />
-          <YAxis tickFormatter={(value) => `$${value.toLocaleString()}`} />
+        <BarChart data={savingsData.filter((entry) => entry.year !== "Year 0")}>
+          <XAxis
+            dataKey="year"
+            interval={2}
+            tickFormatter={(value, index) =>
+              index === 0 ? value : value.replace("Year ", "")
+            }
+          />
+          <YAxis
+            tickFormatter={(value) => {
+              if (value >= 1_00000) {
+                return `$${(value / 1_00000).toFixed(1)}M`;
+              } else if (value >= 1_000) {
+                return `$${(value / 1_000).toFixed(0)}k`;
+              }
+              return `$${value.toLocaleString()}`;
+            }}
+          />
           <Tooltip
             formatter={(value) => [`$${value.toLocaleString()}`, "Amount"]}
             labelFormatter={(label) => `📅 ${label}`}

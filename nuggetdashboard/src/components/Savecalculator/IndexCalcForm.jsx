@@ -1,41 +1,24 @@
-import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { indexGrowth, updateSavingsParameters } from "../../store/indexSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  updateSavingsParameters,
+  calculateSavings,
+} from "../../store/indexSlice";
 
 function SaveCalcForm() {
   const dispatch = useDispatch();
-  const [startAmount, setStartAmount] = useState(10000);
-  const [monthlyDeposit, setMonthlyDeposit] = useState(1000);
-  const [years, setYears] = useState(1);
-  const annualReturn = 7;
+  const { startAmount, monthlyDeposit, years, savings } = useSelector(
+    (state) => state.savings
+  );
 
-  const calculateFutureValue = (
-    startAmount,
-    monthlyDeposit,
-    years,
-    annualReturn
-  ) => {
-    const r = annualReturn / 100 / 12;
-    const n = years * 12;
-
-    const futureValue =
-      startAmount * Math.pow(1 + r, n) +
-      monthlyDeposit * ((Math.pow(1 + r, n) - 1) / r);
-
-    return futureValue;
-  };
-
-  useEffect(() => {
-    const indexFutureValue = calculateFutureValue(
-      startAmount,
-      monthlyDeposit,
-      years,
-      annualReturn
+  const handleChange = (param, value) => {
+    dispatch(
+      updateSavingsParameters({
+        ...{ startAmount, monthlyDeposit, years },
+        [param]: value,
+      })
     );
-    dispatch(indexGrowth(Math.round(indexFutureValue)));
-    // Uppdatera sparande parametrar i global state
-    dispatch(updateSavingsParameters({ startAmount, monthlyDeposit, years }));
-  }, [startAmount, monthlyDeposit, years, dispatch, annualReturn]);
+    dispatch(calculateSavings());
+  };
 
   return (
     <div className="max-w-lg mx-auto bg-white p-8 rounded-2xl shadow-lg border border-gray-200 text-center mt-5 mb-5">
@@ -45,24 +28,8 @@ function SaveCalcForm() {
         </div>
       </div>
       <h5 className="text-3xl font-bold text-green-600">
-        $
-        {Math.round(
-          calculateFutureValue(startAmount, monthlyDeposit, years, annualReturn)
-        ).toLocaleString()}
+        ${savings.toLocaleString()}
       </h5>
-      <p className="text-gray-500 text-sm mb-4">
-        Of which $
-        {Math.round(
-          calculateFutureValue(
-            startAmount,
-            monthlyDeposit,
-            years,
-            annualReturn
-          ) -
-            (startAmount + monthlyDeposit * years * 12)
-        ).toLocaleString()}{" "}
-        in return
-      </p>
 
       <form className="space-y-4 mt-4">
         <div className="bg-gray-100 p-3 rounded-lg">
@@ -75,7 +42,9 @@ function SaveCalcForm() {
             max="1500"
             step="50"
             value={monthlyDeposit}
-            onChange={(e) => setMonthlyDeposit(Number(e.target.value))}
+            onChange={(e) =>
+              handleChange("monthlyDeposit", Number(e.target.value))
+            }
             className="w-full mt-2"
           />
         </div>
@@ -89,7 +58,9 @@ function SaveCalcForm() {
             max="100000"
             step="500"
             value={startAmount}
-            onChange={(e) => setStartAmount(Number(e.target.value))}
+            onChange={(e) =>
+              handleChange("startAmount", Number(e.target.value))
+            }
             className="w-full mt-2"
           />
         </div>
@@ -103,7 +74,7 @@ function SaveCalcForm() {
             max="50"
             step="1"
             value={years}
-            onChange={(e) => setYears(Number(e.target.value))}
+            onChange={(e) => handleChange("years", Number(e.target.value))}
             className="w-full mt-2"
           />
         </div>
