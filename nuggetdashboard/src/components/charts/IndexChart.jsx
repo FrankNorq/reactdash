@@ -14,7 +14,7 @@ const IndexChart = () => {
   const { savingsData } = useSelector((state) => state.savings);
 
   return (
-    <div className="w-full max-w-2xl mx-auto p-4 bg-white shadow-lg rounded-2xl">
+    <div className="w-full max-w-2xl mx-auto p-4 mb-24! bg-white shadow-lg rounded-2xl">
       <h2 className="text-xl font-semibold text-center mb-4">Index Savings</h2>
       <ResponsiveContainer width="100%" height={300}>
         <BarChart data={savingsData.filter((entry) => entry.year !== "Year 0")}>
@@ -27,8 +27,8 @@ const IndexChart = () => {
           />
           <YAxis
             tickFormatter={(value) => {
-              if (value >= 1_00000) {
-                return `$${(value / 1_00000).toFixed(1)}M`;
+              if (value >= 1_000_000) {
+                return `$${(value / 1_000_000).toFixed(1)}M`;
               } else if (value >= 1_000) {
                 return `$${(value / 1_000).toFixed(0)}k`;
               }

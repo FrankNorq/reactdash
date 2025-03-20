@@ -1,26 +1,150 @@
-    {
-        "users": [
-        {
-            "id": 1,
-            "name": "Alice",
-            "email": "alice@example.com"
-        },
-        {
-            "id": 2,
-            "name": "Bob",
-            "email": "bob@example.com"
-        }
-        ],
-        "products": [
-        {
-            "id": 1,
-            "name": "Laptop",
-            "price": 999.99
-        },
-        {
-            "id": 2,
-            "name": "Smartphone",
-            "price": 499.99
-        }
-        ]
-    }
+{
+    "savings_goals": [
+      {
+        "name": "Luxury Sports Car",
+        "description": "A high-end sports car, built for speed and luxury.",
+        "amount": 100000,
+        "category": "Vehicles",
+              "image": "https://industrytechinsights.com/wp-content/uploads/2021/08/The-worlds-most-powerful-rocket-for-missions-to-the-Moon-768x448.png"
+      },
+      {
+        "name": "Designer Handbag",
+        "description": "A limited edition handbag from a top designer.",
+        "amount": 120000,
+        "category": "Fashion",
+              "image": "https://industrytechinsights.com/wp-content/uploads/2021/08/The-worlds-most-powerful-rocket-for-missions-to-the-Moon-768x448.png"
+      },
+      {
+        "name": "Home Renovation",
+        "description": "Complete renovation of your home with high-end finishes.",
+        "amount": 150000,
+        "category": "Real Estate",
+              "image": "https://industrytechinsights.com/wp-content/uploads/2021/08/The-worlds-most-powerful-rocket-for-missions-to-the-Moon-768x448.png"
+      },
+      {
+        "name": "Luxury Watch",
+        "description": "An exclusive watch brand, symbol of status and style.",
+        "amount": 200000,
+        "category": "Accessories",
+              "image": "https://industrytechinsights.com/wp-content/uploads/2021/08/The-worlds-most-powerful-rocket-for-missions-to-the-Moon-768x448.png"
+      },
+      {
+        "name": "High-End Electronics",
+        "description": "Latest high-end gadgets including TVs, sound systems, and computers.",
+        "amount": 250000,
+        "category": "Technology",
+              "image": "https://industrytechinsights.com/wp-content/uploads/2021/08/The-worlds-most-powerful-rocket-for-missions-to-the-Moon-768x448.png"
+      },
+      {
+        "name": "Private Island",
+        "description": "A small private island for relaxation and luxury.",
+        "amount": 300000,
+        "category": "Real Estate",
+              "image": "https://industrytechinsights.com/wp-content/uploads/2021/08/The-worlds-most-powerful-rocket-for-missions-to-the-Moon-768x448.png"
+      },
+      {
+        "name": "Luxury Yacht",
+        "description": "A private yacht with full amenities for luxurious sailing.",
+        "amount": 500000,
+        "category": "Vehicles",
+              "image": "https://industrytechinsights.com/wp-content/uploads/2021/08/The-worlds-most-powerful-rocket-for-missions-to-the-Moon-768x448.png"
+      },
+      {
+        "name": "Exotic Vacation",
+        "description": "A 5-star vacation package to an exotic location.",
+        "amount": 600000,
+        "category": "Travel",
+              "image": "https://industrytechinsights.com/wp-content/uploads/2021/08/The-worlds-most-powerful-rocket-for-missions-to-the-Moon-768x448.png"
+      },
+      {
+        "name": "Investment Property",
+        "description": "Purchase an investment property in a prime location.",
+        "amount": 750000,
+        "category": "Real Estate",
+              "image": "https://industrytechinsights.com/wp-content/uploads/2021/08/The-worlds-most-powerful-rocket-for-missions-to-the-Moon-768x448.png"
+      },
+      {
+        "name": "Fine Art Collection",
+        "description": "Start a collection of valuable artwork from renowned artists.",
+        "amount": 1000000,
+        "category": "Collectibles",
+              "image": "https://industrytechinsights.com/wp-content/uploads/2021/08/The-worlds-most-powerful-rocket-for-missions-to-the-Moon-768x448.png"
+      },
+      {
+        "name": "Luxury Furniture Set",
+        "description": "A complete set of designer furniture for your living room.",
+        "amount": 1200000,
+        "category": "Interior Design",
+              "image": "https://industrytechinsights.com/wp-content/uploads/2021/08/The-worlds-most-powerful-rocket-for-missions-to-the-Moon-768x448.png"
+      },
+      {
+        "name": "Private Jet",
+        "description": "A small private jet for personal travel.",
+        "amount": 3000000,
+        "category": "Vehicles",
+              "image": "https://industrytechinsights.com/wp-content/uploads/2021/08/The-worlds-most-powerful-rocket-for-missions-to-the-Moon-768x448.png"
+      },
+      {
+        "name": "Luxury Watch Collection",
+        "description": "A collection of rare and exclusive luxury watches.",
+        "amount": 3500000,
+        "category": "Accessories",
+              "image": "https://industrytechinsights.com/wp-content/uploads/2021/08/The-worlds-most-powerful-rocket-for-missions-to-the-Moon-768x448.png"
+      },
+      {
+        "name": "High-End Restaurant",
+        "description": "Invest in a high-end restaurant in a prime location.",
+        "amount": 4000000,
+        "category": "Business",
+              "image": "https://industrytechinsights.com/wp-content/uploads/2021/08/The-worlds-most-powerful-rocket-for-missions-to-the-Moon-768x448.png"
+      },
+      {
+        "name": "Luxury Safari Trip",
+        "description": "An extravagant safari adventure in Africa with all luxuries.",
+        "amount": 5000000,
+        "category": "Travel",
+              "image": "https://industrytechinsights.com/wp-content/uploads/2021/08/The-worlds-most-powerful-rocket-for-missions-to-the-Moon-768x448.png"
+      },
+      {
+        "name": "Private Concert Experience",
+        "description": "An exclusive concert or event with your favorite band.",
+        "amount": 6000000,
+        "category": "Entertainment",
+              "image": "https://industrytechinsights.com/wp-content/uploads/2021/08/The-worlds-most-powerful-rocket-for-missions-to-the-Moon-768x448.png"
+      },
+      {
+        "name": "Luxury Apartment in NYC",
+        "description": "A high-end apartment in Manhattan with a view.",
+        "amount": 7500000,
+        "category": "Real Estate",
+              "image": "https://industrytechinsights.com/wp-content/uploads/2021/08/The-worlds-most-powerful-rocket-for-missions-to-the-Moon-768x448.png"
+      },
+      {
+        "name": "Eco-Friendly House",
+        "description": "Build a luxurious eco-friendly home.",
+        "amount": 9000000,
+        "category": "Real Estate",
+              "image": "https://industrytechinsights.com/wp-content/uploads/2021/08/The-worlds-most-powerful-rocket-for-missions-to-the-Moon-768x448.png"
+      },
+      {
+        "name": "High-End Jewelry Collection",
+        "description": "A collection of unique and valuable jewelry pieces.",
+        "amount": 10000000,
+        "category": "Accessories",
+              "image": "https://industrytechinsights.com/wp-content/uploads/2021/08/The-worlds-most-powerful-rocket-for-missions-to-the-Moon-768x448.png"
+      },
+      {
+        "name": "Billionaire's Vacation",
+        "description": "A luxury vacation to a private resort reserved for billionaires.",
+        "amount": 15000000,
+        "category": "Travel",
+              "image": "https://industrytechinsights.com/wp-content/uploads/2021/08/The-worlds-most-powerful-rocket-for-missions-to-the-Moon-768x448.png"
+      },
+      {
+        "name": "Private Golf Course",
+        "description": "Purchase a private golf course for personal enjoyment.",
+        "amount": 20000000,
+        "category": "Real Estate",
+              "image": "https://industrytechinsights.com/wp-content/uploads/2021/08/The-worlds-most-powerful-rocket-for-missions-to-the-Moon-768x448.png"
+      }
+    ]}

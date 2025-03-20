@@ -10,7 +10,7 @@ function SaveCalcForm() {
     (state) => state.savings
   );
 
-  const handleChange = (param, value) => {
+  const handleIndexChange = (param, value) => {
     dispatch(
       updateSavingsParameters({
         ...{ startAmount, monthlyDeposit, years },
@@ -30,6 +30,13 @@ function SaveCalcForm() {
       <h5 className="text-3xl font-bold text-green-600">
         ${savings.toLocaleString()}
       </h5>
+      <p className="text-gray-500 text-sm mb-4">
+        Of which $
+        {Math.round(
+          savings - (startAmount + monthlyDeposit * years * 12)
+        ).toLocaleString()}{" "}
+        in return
+      </p>
 
       <form className="space-y-4 mt-4">
         <div className="bg-gray-100 p-3 rounded-lg">
@@ -43,7 +50,7 @@ function SaveCalcForm() {
             step="50"
             value={monthlyDeposit}
             onChange={(e) =>
-              handleChange("monthlyDeposit", Number(e.target.value))
+              handleIndexChange("monthlyDeposit", Number(e.target.value))
             }
             className="w-full mt-2"
           />
@@ -59,7 +66,7 @@ function SaveCalcForm() {
             step="500"
             value={startAmount}
             onChange={(e) =>
-              handleChange("startAmount", Number(e.target.value))
+              handleIndexChange("startAmount", Number(e.target.value))
             }
             className="w-full mt-2"
           />
@@ -74,7 +81,7 @@ function SaveCalcForm() {
             max="50"
             step="1"
             value={years}
-            onChange={(e) => handleChange("years", Number(e.target.value))}
+            onChange={(e) => handleIndexChange("years", Number(e.target.value))}
             className="w-full mt-2"
           />
         </div>

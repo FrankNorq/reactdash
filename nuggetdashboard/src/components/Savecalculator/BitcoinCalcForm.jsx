@@ -10,34 +10,11 @@ function BitCoinCalcForm() {
     (state) => state.bitcoinSavings
   );
 
-  const handleStartAmountChange = (value) => {
+  const handleBitcoinChange = (param, value) => {
     dispatch(
       updateBitcoinSavingsParameters({
-        startAmount: value,
-        monthlyDeposit,
-        years,
-      })
-    );
-    dispatch(calculateSavings());
-  };
-
-  const handleMonthlyDepositChange = (value) => {
-    dispatch(
-      updateBitcoinSavingsParameters({
-        startAmount,
-        monthlyDeposit: value,
-        years,
-      })
-    );
-    dispatch(calculateSavings());
-  };
-
-  const handleYearsChange = (value) => {
-    dispatch(
-      updateBitcoinSavingsParameters({
-        startAmount,
-        monthlyDeposit,
-        years: value,
+        ...{ startAmount, monthlyDeposit, years },
+        [param]: value,
       })
     );
     dispatch(calculateSavings());
@@ -73,7 +50,9 @@ function BitCoinCalcForm() {
             max="1500"
             step="50"
             value={monthlyDeposit}
-            onChange={(e) => handleMonthlyDepositChange(Number(e.target.value))}
+            onChange={(e) =>
+              handleBitcoinChange("monthlyDeposit", Number(e.target.value))
+            }
             className="w-full mt-2"
           />
         </div>
@@ -87,7 +66,9 @@ function BitCoinCalcForm() {
             max="100000"
             step="500"
             value={startAmount}
-            onChange={(e) => handleStartAmountChange(Number(e.target.value))}
+            onChange={(e) =>
+              handleBitcoinChange("startAmount", Number(e.target.value))
+            }
             className="w-full mt-2"
           />
         </div>
@@ -101,7 +82,9 @@ function BitCoinCalcForm() {
             max="50"
             step="1"
             value={years}
-            onChange={(e) => handleYearsChange(Number(e.target.value))}
+            onChange={(e) =>
+              handleBitcoinChange("years", Number(e.target.value))
+            }
             className="w-full mt-2"
           />
         </div>

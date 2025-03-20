@@ -14,7 +14,7 @@ const BitcoinChart = () => {
   const { savingsData } = useSelector((state) => state.bitcoinSavings);
 
   return (
-    <div className="w-full max-w-2xl mx-auto p-4 bg-white shadow-lg rounded-2xl">
+    <div className="w-full max-w-2xl mx-auto p-4 my-16! bg-white shadow-lg rounded-2xl">
       <h2 className="text-xl font-semibold text-center mb-4">
         Bitcoin Savings
       </h2>
@@ -29,8 +29,8 @@ const BitcoinChart = () => {
           />
           <YAxis
             tickFormatter={(value) => {
-              if (value >= 1_00000) {
-                return `$${(value / 1_00000).toFixed(1)}k`;
+              if (value >= 1_000_000) {
+                return `$${(value / 1_000_000).toFixed(1)}M`;
               } else if (value >= 1_000) {
                 return `$${(value / 1_000).toFixed(0)}k`;
               }
