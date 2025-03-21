@@ -1,3 +1,4 @@
+import TestComponent from "../components/AffordableItem";
 import CircularText from "../components/RotatingText/CircularText";
 import BitcoinChart from "../components/charts/BitcoinChart";
 import IndexChart from "../components/charts/IndexChart";
@@ -15,6 +16,7 @@ function HomePage() {
         <CircularText text="Bitcoin" />
       </section>
       <BitcoinChart></BitcoinChart>
+      <TestComponent></TestComponent>
     </div>
   );
 }

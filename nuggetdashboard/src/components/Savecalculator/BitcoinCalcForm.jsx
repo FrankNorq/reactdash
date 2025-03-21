@@ -93,6 +93,13 @@ function BitCoinCalcForm() {
         *We have calculated that you will get an annual increase of 30% per
         year.
       </p>
+
+      <div>
+      <button onClick={() => { handleFetch(); }} className="bg-blue-600 text-white px-4 py-2 rounded-lg mt-4">
+        Click me
+      </button>
+      
+      </div>
     </div>
   );
 }

@@ -1,15 +1,17 @@
 import {  configureStore }
 from '@reduxjs/toolkit';
-import indexSavingSlice from "./indexSlice"
-import bitcoinSavingSlice from "./bitcoinSlice"
+import indexReducer from "./indexSlice"
+import bitcoinReducer from "./bitcoinSlice"
+import dbReducer from "./dbSlice"
 
 
 
 
 const store = configureStore({
   reducer: {
-    savings: indexSavingSlice,
-    bitcoinSavings: bitcoinSavingSlice,
+    savings: indexReducer,
+    bitcoinSavings: bitcoinReducer,
+    savingGoals: dbReducer,
 
   },
 
