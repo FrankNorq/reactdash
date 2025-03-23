@@ -15,7 +15,7 @@ const RenderItems = ({ savingsSource }) => {
   const affordableItems = items.filter((item) => item.amount <= savings);
 
   return (
-    <div className="p-6">
+    <div className="p-6 text-center">
       <h2 className="text-2xl font-bold mb-4">
         Render Items to get with your savings
       </h2>

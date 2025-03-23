@@ -11,7 +11,7 @@ import {
 } from "recharts";
 
 const IndexChart = () => {
-  const { savingsData } = useSelector((state) => state.savings);
+  const { savingsData } = useSelector((state) => state.indexSavings);
 
   return (
     <div className="w-full max-w-2xl mx-auto p-4 mb-24! bg-white shadow-lg rounded-2xl">
