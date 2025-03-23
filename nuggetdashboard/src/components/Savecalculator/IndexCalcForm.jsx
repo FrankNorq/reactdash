@@ -7,7 +7,7 @@ import {
 function SaveCalcForm() {
   const dispatch = useDispatch();
   const { startAmount, monthlyDeposit, years, savings } = useSelector(
-    (state) => state.savings
+    (state) => state.indexSavings
   );
 
   const handleIndexChange = (param, value) => {
@@ -17,6 +17,7 @@ function SaveCalcForm() {
         [param]: value,
       })
     );
+    console.log("🚀 Dispatchar calculateSavings...");
     dispatch(calculateSavings());
   };
 
