@@ -17,7 +17,6 @@ function SaveCalcForm() {
         [param]: value,
       })
     );
-    console.log("🚀 Dispatchar calculateSavings...");
     dispatch(calculateSavings());
   };
 

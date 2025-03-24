@@ -43,7 +43,7 @@ const RenderItems = ({ savingsSource }) => {
             </div>
           ))
         ) : (
-          <p className="col-span-full text-center text-gray-500">
+          <p className="col-span-full text-center text-red-500">
             No savings goals within your budget.
           </p>
         )}
