@@ -1,12 +1,16 @@
 import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
 import { fetchItems } from "../store/dbSlice";
 
 const RenderItems = ({ savingsSource }) => {
   const dispatch = useDispatch();
   const { items, loading, error } = useSelector((state) => state.savingGoals);
   const savings = useSelector((state) => state[savingsSource]?.savings || 0);
+  const [fetched, setFetched] = useState(false);
+
   const handleFetchItems = () => {
     dispatch(fetchItems());
+    setFetched(true);
   };
 
   if (loading) return <p>Loading...</p>;
@@ -27,26 +31,29 @@ const RenderItems = ({ savingsSource }) => {
       </button>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {affordableItems.length > 0 ? (
-          affordableItems.map((item) => (
-            <div key={item.name} className="bg-white p-4 rounded-lg shadow-lg">
-              <h3 className="text-lg font-bold">{item.name}</h3>
-              <p className="text-gray-700">{item.description}</p>
-              <p className="text-green-600 font-semibold">
-                Price: ${item.amount}
+        {affordableItems.length > 0
+          ? affordableItems.map((item) => (
+              <div
+                key={item.name}
+                className="bg-white p-4 rounded-lg shadow-lg"
+              >
+                <h3 className="text-lg font-bold">{item.name}</h3>
+                <p className="text-gray-700">{item.description}</p>
+                <p className="text-green-600 font-semibold">
+                  Price: ${item.amount}
+                </p>
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  className="w-full h-40 object-cover mt-2 rounded-lg"
+                />
+              </div>
+            ))
+          : fetched && (
+              <p className="col-span-full text-center text-red-500">
+                No savings goals within your budget.
               </p>
-              <img
-                src={item.image}
-                alt={item.name}
-                className="w-full h-40 object-cover mt-2 rounded-lg"
-              />
-            </div>
-          ))
-        ) : (
-          <p className="col-span-full text-center text-red-500">
-            No savings goals within your budget.
-          </p>
-        )}
+            )}
       </div>
     </div>
   );
