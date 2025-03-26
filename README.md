@@ -27,9 +27,11 @@ cd nuggetdashboard
 2. Installera beroenden
 
 npm install
+3. Starta db.json
+json-server --watch db.json
 
-3. Starta utvecklingsservern
-
+4. Starta utvecklingsservern
+vd nuggetdashboard
 npm run dev
 
 Applikationen körs nu på http://localhost:5173/.
