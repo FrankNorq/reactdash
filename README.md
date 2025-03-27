@@ -17,32 +17,49 @@ Bootstrap – Komponentbaserat CSS-ramverk för ytterligare styling
 
 Redux – Hantering av global state
 
-# Installation och körning
+📌 Installation och körning
+Följ dessa steg för att installera och köra applikationen lokalt:
 
-1. Klona repo från GitHub
-
+1️⃣ Klona repo från GitHub
+sh
+Kopiera
+Redigera
 git clone <repo-url>
 cd nuggetdashboard
-
-2. Installera beroenden
-
+2️⃣ Installera beroenden
+sh
+Kopiera
+Redigera
 npm install
-3. Starta db.json
+3️⃣ Starta JSON-server (för mockad backend)
+sh
+Kopiera
+Redigera
 json-server --watch db.json
-
-4. Starta utvecklingsservern
-vd nuggetdashboard
+4️⃣ Starta utvecklingsservern
+sh
+Kopiera
+Redigera
+cd nuggetdashboard
 npm run dev
+🚀 Applikationen körs nu på: http://localhost:5173/
 
-Applikationen körs nu på http://localhost:5173/.
 
+✨ Funktioner
+Responsivt design – Byggt med Tailwind CSS & Bootstrap för en snygg och flexibel layout.
 
-# Funktioner
+State management – Redux används för hantering av globalt tillstånd.
 
-Responsiv design med Tailwind CSS & Bootstrap
-State management med Redux
-Snabb utveckling med Vite
-Modulär och komponentbaserad struktur
+Snabb utveckling – Vite säkerställer en snabb och effektiv utvecklingsupplevelse.
+
+Modulär & komponentbaserad – Enkel att underhålla och vidareutveckla.
+
+Sparkalkylator – Stöd för både Bitcoin och indexfonder.
+
+Async Thunk – Hämtar data från en lokal db.json för att visa objekt som kan köpas vid olika sparmål.
+
+Optimerad state-hantering – Både beräkningar och resultat sparas i global state för att undvika onödiga beräkningar på flera ställen.
+
 
 # Licens
 
