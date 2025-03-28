@@ -1,18 +1,14 @@
-import {  configureStore }
-from '@reduxjs/toolkit';
-import indexSavingSlice from "./indexSlice"
-import bitcoinSavingSlice from "./bitcoinSlice"
-
-
-
+import { configureStore } from "@reduxjs/toolkit";
+import indexReducer from "./indexSlice";
+import bitcoinReducer from "./bitcoinSlice";
+import dbReducer from "./dbSlice";
 
 const store = configureStore({
   reducer: {
-    savings: indexSavingSlice,
-    bitcoinSavings: bitcoinSavingSlice,
-
+    indexSavings: indexReducer,
+    bitcoinSavings: bitcoinReducer,
+    savingGoals: dbReducer,
   },
-
 });
 
 export default store;

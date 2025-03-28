@@ -1,52 +1,39 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { indexGrowth } from "../../store/indexSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  updateSavingsParameters,
+  calculateSavings,
+} from "../../store/indexSlice";
 
 function SaveCalcForm() {
   const dispatch = useDispatch();
-  const [startAmount, setStartAmount] = useState(10000);
-  const [monthlyDeposit, setMonthlyDeposit] = useState(1000);
-  const [years, setYears] = useState(1);
-  const annualReturn = 7;
-  const calculateFutureValue = (
-    startAmount,
-    monthlyDeposit,
-    years,
-    annualReturn
-  ) => {
-    const r = annualReturn / 100 / 12; // Månatlig avkastning
-    const n = years * 12; // Totala månader
-
-    const futureValue =
-      startAmount * Math.pow(1 + r, n) +
-      monthlyDeposit * ((Math.pow(1 + r, n) - 1) / r);
-
-    return futureValue;
-  };
-
-  const indexFutureValue = calculateFutureValue(
-    startAmount,
-    monthlyDeposit,
-    years,
-    annualReturn
+  const { startAmount, monthlyDeposit, years, savings } = useSelector(
+    (state) => state.indexSavings
   );
-  dispatch(indexGrowth(Math.round(indexFutureValue)));
+
+  const handleIndexChange = (param, value) => {
+    dispatch(
+      updateSavingsParameters({
+        ...{ startAmount, monthlyDeposit, years },
+        [param]: value,
+      })
+    );
+    dispatch(calculateSavings());
+  };
 
   return (
     <div className="max-w-lg mx-auto bg-white p-8 rounded-2xl shadow-lg border border-gray-200 text-center mt-5 mb-5">
       <div className="flex justify-center items-center mb-4">
-        <div className=" text-gray-800 text-lg font-bold px-4 py-2 rounded-lg">
+        <div className="text-gray-800 text-lg font-bold px-4 py-2 rounded-lg">
           Test our savings calculator
         </div>
       </div>
       <h5 className="text-3xl font-bold text-green-600">
-        {" "}
-        ${Math.round(indexFutureValue).toLocaleString()}
+        ${savings.toLocaleString()}
       </h5>
       <p className="text-gray-500 text-sm mb-4">
         Of which $
         {Math.round(
-          indexFutureValue - (startAmount + monthlyDeposit * years * 12)
+          savings - (startAmount + monthlyDeposit * years * 12)
         ).toLocaleString()}{" "}
         in return
       </p>
@@ -62,7 +49,9 @@ function SaveCalcForm() {
             max="1500"
             step="50"
             value={monthlyDeposit}
-            onChange={(e) => setMonthlyDeposit(Number(e.target.value))}
+            onChange={(e) =>
+              handleIndexChange("monthlyDeposit", Number(e.target.value))
+            }
             className="w-full mt-2"
           />
         </div>
@@ -76,7 +65,9 @@ function SaveCalcForm() {
             max="100000"
             step="500"
             value={startAmount}
-            onChange={(e) => setStartAmount(Number(e.target.value))}
+            onChange={(e) =>
+              handleIndexChange("startAmount", Number(e.target.value))
+            }
             className="w-full mt-2"
           />
         </div>
@@ -90,7 +81,7 @@ function SaveCalcForm() {
             max="50"
             step="1"
             value={years}
-            onChange={(e) => setYears(Number(e.target.value))}
+            onChange={(e) => handleIndexChange("years", Number(e.target.value))}
             className="w-full mt-2"
           />
         </div>

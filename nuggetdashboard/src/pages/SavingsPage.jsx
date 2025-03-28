@@ -1,11 +1,14 @@
- import HeroComponent from "../components/Herovideo/Hero";
+import HeroComponent from "../components/Herovideo/Hero";
 import SavingCalculator from "../components/Savecalculator/SaveCalculator";
- function SavingsPage() {
-    return ( <div>
-        <HeroComponent/>
-        <SavingCalculator/>
-    
-    </div> );
- }
- 
- export default SavingsPage;
+import RenderItems from "../components/renderItems";
+function SavingsPage() {
+  return (
+    <div>
+      <HeroComponent />
+      <SavingCalculator />
+      <RenderItems savingsSource="indexSavings" />
+    </div>
+  );
+}
+
+export default SavingsPage;

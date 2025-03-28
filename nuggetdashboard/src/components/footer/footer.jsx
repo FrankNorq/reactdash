@@ -10,7 +10,10 @@ import {
 
 export default function App() {
   return (
-    <MDBFooter bgColor="light" className="text-center text-lg-start text-muted">
+    <MDBFooter
+      bgColor="none"
+      className="text-center text-lg-start text-white bg-gray-800"
+    >
       <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
         <div className="me-5 d-none d-lg-block">
           <span>Get connected with us on social networks:</span>
@@ -81,22 +84,34 @@ export default function App() {
             <MDBCol md="3" lg="2" xl="2" className="mx-auto mb-4">
               <h6 className="text-uppercase fw-bold mb-4">Useful links</h6>
               <p>
-                <NavLink to="/" className="text-reset">
+                <NavLink
+                  to="/"
+                  className="text-blue-500 underline! hover:text-blue-300!"
+                >
                   Home
                 </NavLink>
               </p>
               <p>
-                <NavLink to="/calc" className="text-reset">
+                <NavLink
+                  to="/calc"
+                  className="text-blue-500 underline! hover:text-blue-300!"
+                >
                   Calculate savings
                 </NavLink>
               </p>
               <p>
-                <NavLink to="/about" className="text-reset">
+                <NavLink
+                  to="/about"
+                  className="text-blue-500 underline! hover:text-blue-300!"
+                >
                   About us
                 </NavLink>
               </p>
               <p>
-                <NavLink to="/about/contact" className="text-reset">
+                <NavLink
+                  to="/about/contact"
+                  className="text-blue-500 underline! hover:text-blue-300!"
+                >
                   Contact
                 </NavLink>
               </p>
