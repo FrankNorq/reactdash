@@ -40,12 +40,7 @@ const indexSavingSlice = createSlice({
       let savingsData = [];
       let calculatedSavings = 0;
       const { startAmount, monthlyDeposit, years, annualReturn } = state;
-      console.log("🚀 calculateSavings anropas!");
-      console.log("📊 Nuvarande värden:", {
-        startAmount,
-        monthlyDeposit,
-        years,
-      });
+
       for (let year = 0; year <= years; year++) {
         calculatedSavings = calculateFutureValue(
           startAmount,
