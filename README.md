@@ -3,7 +3,7 @@
 # Projektbeskrivning
 
 Det här projektet är en React-applikation byggd med Vite. Det använder Tailwind CSS och Bootstrap för styling samt Redux för state management.
-Applikationen har en modern design och responsivt gränssnitt, och hanterar global state effektivt med Redux.
+Applikationen har en modern design och responsivt gränssnitt, och hanterar global state effektivt med Redux. Du kan sätta olika sparmål i dina kalkylatorer beroende vad du tänker spara i. Då kan du se olika trender år för år hur mycket pengar du kommer att få! 
 
 # Teknikval
 
@@ -59,6 +59,10 @@ Sparkalkylator – Stöd för både Bitcoin och indexfonder.
 Async Thunk – Hämtar data från en lokal db.json för att visa objekt som kan köpas vid olika sparmål.
 
 Optimerad state-hantering – Både beräkningar och resultat sparas i global state för att undvika onödiga beräkningar på flera ställen.
+
+Diagram som är responsiva med vilka värden du matar in i dina kalkylatorer. Visar även summan i deposit o intrest. 
+
+Vidareutvecklat tillgängligheten med färgval etc.
 
 
 # Licens
